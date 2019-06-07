@@ -5,6 +5,7 @@
  */
 
 const express = require('express')
+const ActionsController = require('../controllers/ActionsController')
 
 /**
  * Define router
@@ -18,12 +19,8 @@ const router = express.Router()
  */
 
 router.route('/')
-  .get((req, res) => {
-    res.sendStatus(200)
-  })
-  .post((req, res) => {
-    res.sendStatus(200)
-  })
+  .get(ActionsController.all)
+  .post(ActionsController.create)
 
 /**
  * Routes
@@ -31,15 +28,9 @@ router.route('/')
  */
 
 router.route('/:id')
-  .get((req, res) => {
-    res.sendStatus(200)
-  })
-  .put((req, res) => {
-    res.sendStatus(200)
-  })
-  .delete((req, res) => {
-    res.sendStatus(200)
-  })
+  .get(ActionsController.find)
+  .put(ActionsController.update)
+  .delete(ActionsController.remove)
 
 /**
  * Export router
