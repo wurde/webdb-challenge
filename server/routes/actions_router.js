@@ -11,7 +11,7 @@ const ActionsController = require('../controllers/ActionsController')
  * Define router
  */
 
-const router = express.Router()
+const router = express.Router({ mergeParams: true })
 
 /**
  * Routes
