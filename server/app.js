@@ -5,6 +5,7 @@
  */
 
 const express = require('express')
+const helmet = require('helmet')
 
 /**
  * Constants
@@ -17,6 +18,12 @@ const port = process.env.PORT || 8080
  */
 
 const app = express()
+
+/**
+ * Middleware
+ */
+
+app.use(helmet())
 
 /**
  * Routes

@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/wurde/webdb-challenge#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "helmet": "^3.18.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
