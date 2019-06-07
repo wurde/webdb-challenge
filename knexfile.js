@@ -1,7 +1,6 @@
 'use strict'
 
 module.exports = {
-
   development: {
     client: 'sqlite3',
     connection: {
@@ -13,6 +12,5 @@ module.exports = {
     seeds: {
       directory: './server/db/seeds'
     }
-  },
-
+  }
 };
