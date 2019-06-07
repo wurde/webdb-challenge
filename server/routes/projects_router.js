@@ -5,6 +5,7 @@
  */
 
 const express = require('express')
+const ProjectsController = require('../controllers/ProjectsController')
 
 /**
  * Define router
@@ -18,12 +19,8 @@ const router = express.Router()
  */
 
 router.route('/')
-  .get((req, res) => {
-    res.sendStatus(200)
-  })
-  .post((req, res) => {
-    res.sendStatus(200)
-  })
+  .get(ProjectsController.all)
+  .post(ProjectsController.create)
 
 /**
  * Routes
@@ -31,15 +28,9 @@ router.route('/')
  */
 
 router.route('/:id')
-  .get((req, res) => {
-    res.sendStatus(200)
-  })
-  .put((req, res) => {
-    res.sendStatus(200)
-  })
-  .delete((req, res) => {
-    res.sendStatus(200)
-  })
+  .get(ProjectsController.find)
+  .put(ProjectsController.update)
+  .delete(ProjectsController.remove)
 
 /**
  * Middleware
