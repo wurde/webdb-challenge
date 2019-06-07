@@ -6,6 +6,7 @@
 
 const express = require('express')
 const ActionsController = require('../controllers/ActionsController')
+const check_action_exists = require('../middleware/check_action_exists')
 
 /**
  * Define router
@@ -21,6 +22,13 @@ const router = express.Router({ mergeParams: true })
 router.route('/')
   .get(ActionsController.all)
   .post(ActionsController.create)
+
+/**
+ * Middleware
+ *   check_action_exists
+ */
+
+router.use('/:id', check_action_exists)
 
 /**
  * Routes

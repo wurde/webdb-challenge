@@ -6,6 +6,7 @@
 
 const express = require('express')
 const ProjectsController = require('../controllers/ProjectsController')
+const check_project_exists = require('../middleware/check_project_exists')
 
 /**
  * Define router
@@ -21,6 +22,13 @@ const router = express.Router({ mergeParams: true })
 router.route('/')
   .get(ProjectsController.all)
   .post(ProjectsController.create)
+
+/**
+ * Middleware
+ *   check_project_exists
+ */
+
+router.use('/:id', check_project_exists)
 
 /**
  * Routes
