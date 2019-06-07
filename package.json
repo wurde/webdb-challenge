@@ -1,20 +1,24 @@
 {
   "name": "webdb-challenge",
-  "version": "1.0.0",
-  "description": "This challenge allows you to practice the concepts and techniques learned over the past Sprint and apply them in a concrete project.",
-  "main": "index.js",
+  "version": "0.1.0",
+  "description": "Web DB Challenge.",
+  "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/app.js",
+    "start:dev": "nodemon server/app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wurde/webdb-challenge.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andy Bettisworth",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wurde/webdb-challenge/issues"
   },
-  "homepage": "https://github.com/wurde/webdb-challenge#readme"
+  "homepage": "https://github.com/wurde/webdb-challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
