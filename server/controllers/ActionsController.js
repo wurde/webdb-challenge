@@ -13,7 +13,7 @@ const Action = require('../models/Action')
 class ActionsController {
   static async all(req, res) {
     try {
-      let actions = await Action.all()
+      const actions = await Action.all(req.params.projects_id)
 
       res.status(200).json(actions)
     } catch(err) {
@@ -24,7 +24,7 @@ class ActionsController {
 
   static async create(req, res) {
     try {
-      let action = await Action.create(req.body)
+      const action = await Action.create(req.body)
 
       res.status(201).json(action)
     } catch(err) {
@@ -35,7 +35,7 @@ class ActionsController {
 
   static async find(req, res) {
     try {
-      let action = await Action.find(req.params.id)
+      const action = await Action.find(req.params.id)
 
       res.status(200).json(action)
     } catch(err) {
@@ -46,7 +46,7 @@ class ActionsController {
 
   static async update(req, res) {
     try {
-      let count = await Action.update(req.params.id, req.body)
+      const count = await Action.update(req.params.id, req.body)
 
       res.status(200).json(count)
     } catch(err) {
@@ -57,7 +57,7 @@ class ActionsController {
 
   static async remove(req, res) {
     try {
-      let count = await Action.remove(req.params.id)
+      const count = await Action.remove(req.params.id)
 
       res.status(200).json(actions)
     } catch(err) {

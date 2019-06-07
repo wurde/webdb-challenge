@@ -5,6 +5,7 @@
  */
 
 const Project = require('../models/Project')
+const Action = require('../models/Action')
 
 /**
  * Define controller
@@ -13,7 +14,7 @@ const Project = require('../models/Project')
 class ProjectsController {
   static async all(req, res) {
     try {
-      let projects = await Project.all()
+      const projects = await Project.all()
 
       res.status(200).json(projects)
     } catch(err) {
@@ -24,7 +25,9 @@ class ProjectsController {
 
   static async create(req, res) {
     try {
-      let project = await Project.create(req.body)
+      const [id] = await Project.create(req.body)
+
+      const project = await Project.find(id)
 
       res.status(201).json(project)
     } catch(err) {
@@ -35,7 +38,9 @@ class ProjectsController {
 
   static async find(req, res) {
     try {
-      let project = await Project.find(req.params.id)
+      const project = await Project.find(req.params.id)
+
+      project.actions = await Action.all(req.params.id)
 
       res.status(200).json(project)
     } catch(err) {
@@ -46,7 +51,7 @@ class ProjectsController {
 
   static async update(req, res) {
     try {
-      let count = await Project.update(req.params.id, req.body)
+      const count = await Project.update(req.params.id, req.body)
 
       res.status(200).json(count)
     } catch(err) {
@@ -57,7 +62,7 @@ class ProjectsController {
 
   static async remove(req, res) {
     try {
-      let count = await Project.remove(req.params.id)
+      const count = await Project.remove(req.params.id)
 
       res.status(200).json(projects)
     } catch(err) {
