@@ -32,6 +32,7 @@ app.use(express.json())
 
 app.use('/', require('./routes/root_router'))
 app.use('/projects', require('./routes/projects_router'))
+app.use('/contexts', require('./routes/contexts_router'))
 
 /**
  * Start server
