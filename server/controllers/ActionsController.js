@@ -1,6 +1,12 @@
 'use strict'
 
 /**
+ * Dependencies
+ */
+
+const Action = require('../models/Action')
+
+/**
  * Define controller
  */
 
