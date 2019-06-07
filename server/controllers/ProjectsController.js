@@ -53,7 +53,13 @@ class ProjectsController {
     try {
       const count = await Project.update(req.params.id, req.body)
 
-      res.status(200).json(count)
+      if (count > 0) {
+        const project = await Project.find(req.params.id)
+
+        res.status(200).json(project)
+      } else {
+        res.status(404).json({ error: { message: 'Record not found.' } })
+      }
     } catch(err) {
       console.error(err)
       res.status(500).json({ error: { message: 'Server error.' }})
@@ -64,7 +70,11 @@ class ProjectsController {
     try {
       const count = await Project.remove(req.params.id)
 
-      res.status(200).json(projects)
+      if (count > 0) {
+        res.sendStatus(200)
+      } else {
+        res.status(404).json({ error: { message: 'Record not found.' } })
+      }
     } catch(err) {
       console.error(err)
       res.status(500).json({ error: { message: 'Server error.' }})

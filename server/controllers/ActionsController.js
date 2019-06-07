@@ -48,7 +48,13 @@ class ActionsController {
     try {
       const count = await Action.update(req.params.id, req.body)
 
-      res.status(200).json(count)
+      if (count > 0) {
+        const action = await Action.find(req.params.id)
+
+        res.status(200).json(action)
+      } else {
+        res.status(404).json({ error: { message: 'Record not found.' } })
+      }
     } catch(err) {
       console.error(err)
       res.status(500).json({ error: { message: 'Server error.' }})
@@ -59,7 +65,11 @@ class ActionsController {
     try {
       const count = await Action.remove(req.params.id)
 
-      res.status(200).json(actions)
+      if (count > 0) {
+        res.sendStatus(200)
+      } else {
+        res.status(404).json({ error: { message: 'Record not found.' } })
+      }
     } catch(err) {
       console.error(err)
       res.status(500).json({ error: { message: 'Server error.' }})
