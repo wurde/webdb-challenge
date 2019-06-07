@@ -24,7 +24,11 @@ class ActionsController {
 
   static async create(req, res) {
     try {
-      const action = await Action.create(req.body)
+      req.body.projects_id = req.params.projects_id
+
+      const [id] = await Action.create(req.body)
+
+      const action = await Action.find(id)
 
       res.status(201).json(action)
     } catch(err) {
