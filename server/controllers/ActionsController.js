@@ -28,7 +28,7 @@ class ActionsController {
 
       const [id] = await Action.create(req.body)
 
-      const action = await Action.find(id)
+      const action = await Action.find(req.params.projects_id, id)
 
       res.status(201).json(action)
     } catch(err) {
@@ -39,7 +39,7 @@ class ActionsController {
 
   static async find(req, res) {
     try {
-      const action = await Action.find(req.params.id)
+      const action = await Action.find(req.params.projects_id, req.params.id)
 
       res.status(200).json(action)
     } catch(err) {
@@ -53,7 +53,7 @@ class ActionsController {
       const count = await Action.update(req.params.id, req.body)
 
       if (count > 0) {
-        const action = await Action.find(req.params.id)
+        const action = await Action.find(req.params.projects_id, req.params.id)
 
         res.status(200).json(action)
       } else {

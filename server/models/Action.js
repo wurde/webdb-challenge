@@ -15,8 +15,8 @@ class Action {
     return await db_client('actions').where({ projects_id })
   }
 
-  static async find(id) {
-    return db_client('actions').where({ id }).first()
+  static async find(projects_id, id) {
+    return db_client('actions').where({ projects_id, id }).first()
   }
 
   static async create(project) {
