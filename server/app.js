@@ -30,9 +30,8 @@ app.use(express.json())
  * Routes
  */
 
-app.get('/', (req, res) => {
-  res.sendStatus(200)
-})
+app.use('/', require('./routes/root_router'))
+app.use('/projects', require('./routes/projects_router'))
 
 /**
  * Start server
