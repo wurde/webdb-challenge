@@ -5,6 +5,7 @@
  */
 
 const Action = require('../models/Action')
+const Context = require('../models/Context')
 
 /**
  * Define controller
@@ -40,6 +41,8 @@ class ActionsController {
   static async find(req, res) {
     try {
       const action = await Action.find(req.params.projects_id, req.params.id)
+
+      action.contexts = await Context.all(req.params.id)
 
       res.status(200).json(action)
     } catch(err) {

@@ -13,7 +13,7 @@ const Context = require('../models/Context')
 class ContextsController {
   static async all(req, res) {
     try {
-      const contexts = await Context.all()
+      const contexts = await Context.all(req.params.actions_id)
 
       res.status(200).json(contexts)
     } catch(err) {

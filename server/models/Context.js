@@ -11,8 +11,11 @@ const db_client = require('../db/client')
  */
 
 class Context {
-  static async all() {
-    return await db_client('contexts')
+  static async all(actions_id) {
+    return await db_client.select('c.id', 'c.name')
+      .from('contexts AS c')
+      .innerJoin('context_actions AS ca', 'c.id', 'ca.contexts_id')
+      .where('ca.actions_id', actions_id)
   }
 
   static async find(id) {
